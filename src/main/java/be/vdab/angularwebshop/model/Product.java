@@ -18,6 +18,10 @@ public class Product {
 
     private String pictureUrl;
 
+    // forgot the no args constructor
+    public Product() {
+    }
+
     public Product(Long id, @NotNull(message = "Product name is required.") String name, Double price, String pictureUrl) {
         this.id = id;
         this.name = name;
