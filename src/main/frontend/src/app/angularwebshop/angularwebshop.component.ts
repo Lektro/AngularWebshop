@@ -6,10 +6,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./angularwebshop.component.css']
 })
 export class AngularwebshopComponent implements OnInit {
+ private collapsed = true;
+    orderFinished = false;
 
-  constructor() { }
+    @ViewChild('productsC')
+    productsC: ProductsComponent;
 
-  ngOnInit(): void {
-  }
+    @ViewChild('shoppingCartC')
+    shoppingCartC: ShoppingCartComponent;
 
+    @ViewChild('ordersC')
+    ordersC: OrdersComponent;
+
+    toggleCollapsed(): void {
+        this.collapsed = !this.collapsed;
+    }
+
+    finishOrder(orderFinished: boolean) {
+        this.orderFinished = orderFinished;
+    }
+
+    reset() {
+        this.orderFinished = false;
+        this.productsC.reset();
+        this.shoppingCartC.reset();
+        this.ordersC.paid = false;
+    }
 }
