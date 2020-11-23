@@ -17,7 +17,7 @@ export class ShoppingCartComponent implements OnInit {
 
     @Output() onOrderFinished: EventEmitter<boolean>;
 
-    constructor(private angularwebshopService: AngularWebshopService) {
+    constructor(private angularWebshopService: AngularWebshopService) {
         this.total = 0;
         this.orderFinished = false;
         this.onOrderFinished = new EventEmitter<boolean>();
@@ -30,20 +30,20 @@ export class ShoppingCartComponent implements OnInit {
     }
 
     loadTotal() {
-        this.sub = this.angularwebshopService.OrdersChanged.subscribe(() => {
+        this.sub = this.angularWebshopService.OrdersChanged.subscribe(() => {
             this.total = this.calculateTotal(this.orders.productOrders);
         });
     }
 
     loadCart() {
-        this.sub = this.angularwebshopService.ProductOrderChanged.subscribe(() => {
-            let productOrder = this.angularwebshopService.SelectedProductOrder;
+        this.sub = this.angularWebshopService.ProductOrderChanged.subscribe(() => {
+            let productOrder = this.angularWebshopService.SelectedProductOrder;
             if (productOrder) {
                 this.orders.productOrders.push(new ProductOrder(
                     productOrder.product, productOrder.quantity));
             }
-            this.angularwebshopService.ProductOrders = this.orders;
-            this.orders = this.angularwebshopService.ProductOrders;
+            this.angularWebshopService.ProductOrders = this.orders;
+            this.orders = this.angularWebshopService.ProductOrders;
             this.total = this.calculateTotal(this.orders.productOrders);
         });
     }
@@ -54,7 +54,7 @@ export class ShoppingCartComponent implements OnInit {
 
     finishOrder() {
         this.orderFinished = true;
-        this.angularwebshopService.Total = this.total;
+        this.angularWebshopService.Total = this.total;
         this.onOrderFinished.emit(this.orderFinished);
     }
 

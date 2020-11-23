@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {ProductOrder} from "../models/product-order.model";
 import {Subscription} from "rxjs/internal/Subscription";
 import {ProductOrders} from "../models/product-orders.model";
-import {AngularwebshopService} from "../services/AngularwebshopService";
+import {AngularWebshopService} from "../services/AngularWebshopService";
+import {Product} from "../models/product-model";
 
 @Component({
   selector: 'app-products',
@@ -16,7 +18,7 @@ export class ProductsComponent implements OnInit {
     private shoppingCartOrders: ProductOrders;
     productSelected: boolean = false;
 
-    constructor(private angularwebshopService: AngularwebshopService) {
+    constructor(private angularWebshopService: AngularWebshopService) {
     }
 
     ngOnInit() {
@@ -26,8 +28,8 @@ export class ProductsComponent implements OnInit {
     }
 
     addToCart(order: ProductOrder) {
-        this.angularwebshopService.SelectedProductOrder = order;
-        this.selectedProductOrder = this.angularwebshopService.SelectedProductOrder;
+        this.angularWebshopService.SelectedProductOrder = order;
+        this.selectedProductOrder = this.angularWebshopService.SelectedProductOrder;
         this.productSelected = true;
     }
 
@@ -37,13 +39,13 @@ export class ProductsComponent implements OnInit {
             this.shoppingCartOrders.productOrders.splice(
                 this.getProductIndex(productOrder.product), 1);
         }
-        this.angularwebshopService.ProductOrders = this.shoppingCartOrders;
-        this.shoppingCartOrders = this.angularwebshopService.ProductOrders;
+        this.angularWebshopService.ProductOrders = this.shoppingCartOrders;
+        this.shoppingCartOrders = this.angularWebshopService.ProductOrders;
         this.productSelected = false;
     }
 
     getProductIndex(product: Product): number {
-        return this.angularwebshopService.ProductOrders.productOrders.findIndex(
+        return this.angularWebshopService.ProductOrders.productOrders.findIndex(
             value => value.product === product);
     }
 
@@ -52,7 +54,7 @@ export class ProductsComponent implements OnInit {
     }
 
     loadProducts() {
-        this.angularwebshopService.getAllProducts()
+        this.angularWebshopService.getAllProducts()
             .subscribe(
                 (products: any[]) => {
                     this.products = products;
@@ -65,15 +67,15 @@ export class ProductsComponent implements OnInit {
     }
 
     loadOrders() {
-        this.sub = this.angularwebshopService.OrdersChanged.subscribe(() => {
-            this.shoppingCartOrders = this.angularwebshopService.ProductOrders;
+        this.sub = this.angularWebshopService.OrdersChanged.subscribe(() => {
+            this.shoppingCartOrders = this.angularWebshopService.ProductOrders;
         });
     }
 
     reset() {
         this.productOrders = [];
         this.loadProducts();
-        this.angularwebshopService.ProductOrders.productOrders = [];
+        this.angularWebshopService.ProductOrders.productOrders = [];
         this.loadOrders();
         this.productSelected = false;
     }
