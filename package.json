@@ -1,0 +1,19 @@
+{
+  "name": "angularwebshop",
+  "version": "1.0.0",
+  "description": "webshop demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lektro/AngularWebshop.git"
+  },
+  "author": "Lektro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lektro/AngularWebshop/issues"
+  },
+  "homepage": "https://github.com/Lektro/AngularWebshop#readme"
+}
