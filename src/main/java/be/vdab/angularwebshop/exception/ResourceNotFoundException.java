@@ -1,4 +1,4 @@
-package be.vdab.exception;
+package be.vdab.angularwebshop.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
 

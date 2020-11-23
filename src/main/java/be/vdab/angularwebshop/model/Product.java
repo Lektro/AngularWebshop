@@ -1,4 +1,4 @@
-package be.vdab.model;
+package be.vdab.angularwebshop.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

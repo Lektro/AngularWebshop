@@ -1,4 +1,4 @@
-package be.vdab.exception;
+package be.vdab.angularwebshop.exception;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
