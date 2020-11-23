@@ -5,8 +5,8 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from "@angular/core";
 
 @Injectable()
-export class AngularWebshopService {
-    private productsUrl = "/api/products";
+export class AngularwebshopService {
+ private productsUrl = "/api/products";
     private ordersUrl = "/api/orders";
 
     private productOrder: ProductOrder;

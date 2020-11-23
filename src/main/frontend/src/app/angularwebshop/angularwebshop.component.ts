@@ -4,13 +4,13 @@ import {ShoppingCartComponent} from "./shopping-cart/shopping-cart.component";
 import {OrdersComponent} from "./orders/orders.component";
 
 @Component({
-  selector: 'app-angularwebshop',
-  templateUrl: './angularwebshop.component.html',
-  styleUrls: ['./angularwebshop.component.css']
+    selector: 'app-angularwebshop',
+    templateUrl: './angularwebshop.component.html',
+    styleUrls: ['./angularwebshop.component.css']
 })
 
 export class AngularwebshopComponent implements OnInit {
- private collapsed = true;
+    private collapsed = true;
     orderFinished = false;
 
     @ViewChild('productsC')
@@ -22,6 +22,12 @@ export class AngularwebshopComponent implements OnInit {
     @ViewChild('ordersC')
     ordersC: OrdersComponent;
 
+    constructor() {
+    }
+
+    ngOnInit() {
+    }
+
     toggleCollapsed(): void {
         this.collapsed = !this.collapsed;
     }
@@ -30,5 +36,10 @@ export class AngularwebshopComponent implements OnInit {
         this.orderFinished = orderFinished;
     }
 
-
+    reset() {
+        this.orderFinished = false;
+        this.productsC.reset();
+        this.shoppingCartC.reset();
+        this.ordersC.paid = false;
+    }
 }
