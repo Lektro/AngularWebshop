@@ -8,6 +8,7 @@ import {OrdersComponent} from "./orders/orders.component";
   templateUrl: './angularwebshop.component.html',
   styleUrls: ['./angularwebshop.component.css']
 })
+
 export class AngularwebshopComponent implements OnInit {
  private collapsed = true;
     orderFinished = false;
