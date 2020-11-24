@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {ProductOrders} from "../models/product-orders.model";
 import {ProductOrder} from "../models/product-order.model";
-import {AngularWebshopService} from "../services/AngularWebshopService";
+import {AngularWebshopService} from "../services/angularwebshopService";
 import {Subscription} from "rxjs/internal/Subscription";
 
 @Component({
@@ -26,14 +26,8 @@ export class ShoppingCartComponent implements OnInit {
     ngOnInit() {
         this.orders = new ProductOrders();
         this.loadCart();
-        this.loadTotal();
     }
 
-    loadTotal() {
-        this.sub = this.angularWebshopService.OrdersChanged.subscribe(() => {
-            this.total = this.calculateTotal(this.orders.productOrders);
-        });
-    }
 
     loadCart() {
         this.sub = this.angularWebshopService.ProductOrderChanged.subscribe(() => {
@@ -44,7 +38,6 @@ export class ShoppingCartComponent implements OnInit {
             }
             this.angularWebshopService.ProductOrders = this.orders;
             this.orders = this.angularWebshopService.ProductOrders;
-            this.total = this.calculateTotal(this.orders.productOrders);
         });
     }
 
@@ -62,7 +55,6 @@ export class ShoppingCartComponent implements OnInit {
         this.orderFinished = false;
         this.orders = new ProductOrders();
         this.orders.productOrders = []
-        this.loadTotal();
         this.total = 0;
     }
 }

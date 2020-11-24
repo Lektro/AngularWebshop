@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ProductOrder} from "../models/product-order.model";
 import {Subscription} from "rxjs/internal/Subscription";
 import {ProductOrders} from "../models/product-orders.model";
-import {AngularWebshopService} from "../services/AngularWebshopService";
+import {AngularWebshopService} from "../services/angularwebshopService";
 import {Product} from "../models/product-model";
 
 @Component({
@@ -23,8 +23,6 @@ export class ProductsComponent implements OnInit {
 
     ngOnInit() {
         this.productOrders = [];
-        this.loadProducts();
-        this.loadOrders();
     }
 
     addToCart(order: ProductOrder) {
@@ -53,30 +51,13 @@ export class ProductsComponent implements OnInit {
         return this.getProductIndex(product) > -1;
     }
 
-    loadProducts() {
-        this.angularWebshopService.getAllProducts()
-            .subscribe(
-                (products: any[]) => {
-                    this.products = products;
-                    this.products.forEach(product => {
-                        this.productOrders.push(new ProductOrder(product, 0));
-                    })
-                },
-                (error) => console.log(error)
-            );
-    }
 
-    loadOrders() {
-        this.sub = this.angularWebshopService.OrdersChanged.subscribe(() => {
-            this.shoppingCartOrders = this.angularWebshopService.ProductOrders;
-        });
-    }
+
+
 
     reset() {
         this.productOrders = [];
-        this.loadProducts();
         this.angularWebshopService.ProductOrders.productOrders = [];
-        this.loadOrders();
         this.productSelected = false;
     }
 }

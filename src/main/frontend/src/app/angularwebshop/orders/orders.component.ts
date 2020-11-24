@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductOrders} from "../models/product-orders.model";
 import {Subscription} from "rxjs/internal/Subscription";
-import {AngularWebshopService} from "../services/AngularWebshopService";
+import {AngularWebshopService} from "../services/angularwebshopService";
 
 @Component({
   selector: 'app-orders',
@@ -23,7 +23,7 @@ export class OrdersComponent implements OnInit {
         this.sub = this.angularWebshopService.OrdersChanged.subscribe(() => {
             this.orders = this.angularWebshopService.ProductOrders;
         });
-        this.loadTotal();
+
     }
 
     pay() {
