@@ -10,7 +10,7 @@ import {OrdersComponent} from "./orders/orders.component";
 })
 
 export class AngularWebshopComponent implements OnInit {
- private collapsed = true;
+    collapsed = true;
     orderFinished = false;
 
     @ViewChild('productsC')
